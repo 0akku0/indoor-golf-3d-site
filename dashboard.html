@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leads Dashboard | Back Nine</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body id="dashboard-page">
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">⛳</div>
+    Back Nine
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Experience</a>
+    <a href="supply-install.html">Supply &amp; Install</a>
+    <a href="booking.html">Book</a>
+    <a href="membership.html">Membership</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="supply-install.html" class="btn btn-primary btn-sm">Get a Quote</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+  <div class="container">
+    <div class="flex-between" style="flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="label mb-8">Internal View</div>
+        <h1 style="font-size:2rem;">Supply &amp; Install Leads</h1>
+        <p class="mt-4">Submitted enquiries — updates live as new leads come in.</p>
+      </div>
+      <div class="flex gap-12" style="align-items:center;">
+        <div class="live-indicator">
+          <div class="live-dot"></div>
+          Live
+        </div>
+        <a href="supply-install.html" class="btn btn-primary btn-sm">+ Submit Test Lead</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-top:40px; padding-bottom:80px;">
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-block">
+      <div class="stat-value text-green" id="stat-total">—</div>
+      <div class="stat-label">Total leads</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value" id="stat-today">—</div>
+      <div class="stat-label">Today</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value text-orange" id="stat-hot">—</div>
+      <div class="stat-label">Hot (ASAP / $70k+)</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-value" id="stat-sources">—</div>
+      <div class="stat-label">Via chat widget</div>
+    </div>
+  </div>
+
+  <!-- Demo context callout -->
+  <div class="callout callout-green mt-24 mb-24" style="display:flex; gap:12px; align-items:flex-start;">
+    <span style="flex-shrink:0; font-size:1.1rem;">💡</span>
+    <div>
+      <strong>Demo note:</strong> Leads submitted via the <a href="supply-install.html" style="color:var(--green); text-decoration:underline;">Supply &amp; Install form</a> or the chat widget appear in this table <strong>within seconds</strong> — even across browser tabs. Open both pages side-by-side to show the owner the live capture moment. Once SheetMonkey is configured (see README), leads also land in the Google Sheet simultaneously.
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="leads-table-wrapper">
+    <table class="leads-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Budget</th>
+          <th>Timeline</th>
+          <th>Space (m)</th>
+          <th>Use</th>
+          <th>Submitted</th>
+        </tr>
+      </thead>
+      <tbody id="leads-tbody">
+        <!-- Rendered by dashboard.js -->
+      </tbody>
+    </table>
+    <div id="leads-empty" class="leads-empty" style="display:none;">
+      <div class="icon">📭</div>
+      <p>No leads yet. <a href="supply-install.html" style="color:var(--green);">Submit the first one</a> to see it appear here.</p>
+    </div>
+  </div>
+
+  <!-- Export hint -->
+  <p class="text-xs text-muted mt-16">
+    All leads are also synced to your SheetMonkey-connected Google Sheet. Configure <code>SHEETMONKEY_ENDPOINT</code> in <code>js/config.js</code> to activate sheet sync. See the <a href="README.md" style="color:var(--green);">README</a> for setup instructions.
+  </p>
+
+  <!-- Optional Google Sheets embed -->
+  <div id="sheet-embed-section" class="mt-48" style="display:none;">
+    <hr class="divider" />
+    <div class="label mb-8">Google Sheet (live sync)</div>
+    <h3 class="mb-16">Sheet View</h3>
+    <div style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-light);">
+      <iframe id="sheet-embed-frame"
+              style="width:100%; height:500px; border:none; background:var(--surface);"
+              title="Leads Google Sheet"></iframe>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+  // Show sheet embed if URL configured
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof CONFIG !== 'undefined' && CONFIG.SHEET_EMBED_URL) {
+      const section = document.getElementById('sheet-embed-section');
+      const frame   = document.getElementById('sheet-embed-frame');
+      if (section && frame) {
+        frame.src = CONFIG.SHEET_EMBED_URL;
+        section.style.display = '';
+      }
+    }
+  });
+</script>
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;color:#ddd;font:12px/1.4 system-ui,sans-serif;text-align:center;padding:6px 12px;opacity:.92">Concept demo by Akash Vijayvergia, a fictional venue. Not a real business; forms store data only in your browser.</div>
+</body>
+</html>

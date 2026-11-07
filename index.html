@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Back Nine — Indoor Golf Simulator, Singapore</title>
+  <meta name="description" content="Singapore's premier indoor golf simulator venue in Singapore. Premium launch-monitor simulators. From $70/hr. Daily 10am–midnight." />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three":           "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/":   "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- Three.js canvas — fixed behind everything -->
+<canvas id="three-canvas"></canvas>
+
+<!-- Navigation -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">⛳</div>
+    Back Nine
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Experience</a>
+    <a href="supply-install.html">Supply &amp; Install</a>
+    <a href="booking.html">Book</a>
+    <a href="membership.html">Membership</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="booking.html" class="btn btn-outline btn-sm">Book a Bay</a>
+    <a href="supply-install.html" class="btn btn-primary btn-sm">Get a Quote</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── DESKTOP: 3D scroll panels (fixed overlays) ─────────── -->
+<div id="scroll-panels">
+
+  <!-- Panel 0: Welcome -->
+  <div class="scroll-panel" id="panel-welcome">
+    <div class="panel-inner">
+      <div class="panel-eyebrow">Indoor Golf · Night or Day · Singapore</div>
+      <h1 class="panel-heading">
+        Golf, elevated.<br>
+        <span>Indoors.</span>
+      </h1>
+      <p class="panel-body">
+        Three premium simulator bays. One private room with a 4-metre screen. The most immersive indoor golf experience in Singapore.
+      </p>
+      <div class="panel-actions">
+        <a href="booking.html" class="btn btn-primary btn-lg">Book a Bay →</a>
+        <a href="supply-install.html" class="btn btn-outline btn-lg">Get Your Own →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 1: Reception / Bar -->
+  <div class="scroll-panel align-right" id="panel-reception">
+    <div class="panel-inner">
+      <div class="panel-eyebrow">Reception &amp; Bar</div>
+      <h2 class="panel-heading">
+        Arrive.<br>
+        <span>Settle in.</span>
+      </h2>
+      <div class="scroll-info-pills">
+        <div class="info-pill">Open <strong>Daily 10:00 – 24:00</strong></div>
+        <div class="info-pill">Last booking <strong>21:30</strong></div>
+        <div class="info-pill">From <strong>$70 / hr</strong></div>
+      </div>
+      <p class="panel-body">
+        Walk in or book ahead. Our reception team will get you set up and into your bay quickly. Drinks, scorekeeping, and coaching tips — all here.
+      </p>
+      <div class="panel-actions">
+        <a href="membership.html" class="btn btn-primary">Explore Membership →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 2: Bay 1 -->
+  <div class="scroll-panel" id="panel-bay1">
+    <div class="panel-inner">
+      <div class="panel-eyebrow">Tour-grade Simulators</div>
+      <h2 class="panel-heading">
+        Play any course.<br>
+        <span>Rain or shine.</span>
+      </h2>
+      <p class="panel-body">
+        Dual high-speed cameras track every shot — ball spin, speed, launch angle, and club path. 200+ world courses rendered in 4K. Your swing, perfected indoors.
+      </p>
+      <div class="panel-actions">
+        <a href="supply-install.html" class="btn btn-orange btn-lg">Get a Simulator Quote →</a>
+        <a href="booking.html" class="btn btn-outline btn-lg">Book a Bay</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 3: Bays 2 & 3 -->
+  <div class="scroll-panel align-right" id="panel-bays23">
+    <div class="panel-inner">
+      <div class="panel-eyebrow">Three Bays · Always Available</div>
+      <h2 class="panel-heading">
+        Bring<br>
+        the <span>crew.</span>
+      </h2>
+      <div class="scroll-info-pills">
+        <div class="info-pill">Regular Bay <strong>$70 / hr</strong></div>
+        <div class="info-pill">Member rate <strong>$55 / hr</strong></div>
+        <div class="info-pill"><strong>Hole-in-One</strong> wins 10 hrs free</div>
+      </div>
+      <p class="panel-body">
+        Three independent bays, each with its own simulator and screen. Friends compete, strangers challenge each other, regulars sharpen their game.
+      </p>
+      <div class="panel-actions">
+        <a href="booking.html" class="btn btn-primary">Book Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 4: Private Room -->
+  <div class="scroll-panel" id="panel-private">
+    <div class="panel-inner">
+      <div class="panel-eyebrow">Private Room · Events</div>
+      <h2 class="panel-heading">
+        The full<br>
+        <span>4-metre screen.</span>
+      </h2>
+      <div class="scroll-info-pills">
+        <div class="info-pill">Up to <strong>10 guests</strong></div>
+        <div class="info-pill"><strong>4K</strong> laser projector</div>
+        <div class="info-pill">Bluetooth speakers</div>
+        <div class="info-pill"><strong>$80 / hr</strong> ($65 members)</div>
+      </div>
+      <p class="panel-body">
+        Corporate team-building, birthday celebrations, client entertainment — or just a private round with friends. Exclusively yours for the session.
+      </p>
+      <div class="panel-actions">
+        <a href="booking.html" class="btn btn-primary btn-lg">Reserve the Room →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel 5: Find Us -->
+  <div class="scroll-panel align-center" id="panel-findus">
+    <div class="panel-inner" style="max-width:620px;">
+      <div class="panel-eyebrow">Back Nine · Singapore</div>
+      <h2 class="panel-heading">Find Us.</h2>
+      <p class="panel-body">
+        Concept venue, Singapore.<br>
+        Easy parking and a short walk from the MRT.</p>
+      <div class="scroll-info-pills" style="justify-content:center;">
+        <div class="info-pill">📞 <a href="tel:+6560000000" style="color:inherit;">+65 6000 0000</a></div>
+        <div class="info-pill">✉️ <a href="mailto:hello@backnine.example" style="color:inherit;">hello@backnine.example</a></div>
+      </div>
+      <div class="panel-actions" style="justify-content:center;">
+        <a href="contact.html" class="btn btn-primary btn-lg">Get Directions →</a>
+        <a href="booking.html" class="btn btn-outline btn-lg">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /scroll-panels -->
+
+<!-- Scroll nav dots -->
+<div id="scroll-nav"></div>
+
+<!-- Scroll hint -->
+<div class="scroll-hint">
+  <span>Scroll</span>
+  <div class="arrow"></div>
+</div>
+
+<!-- Scroll spacer (height set by scroll-panels.js) -->
+<div id="scroll-spacer"></div>
+
+
+<!-- ── MOBILE FALLBACK: normal scroll layout ────────────── -->
+<div class="mobile-hero">
+
+  <section class="mobile-scroll-section">
+    <div class="mobile-section-divider"></div>
+    <div class="panel-eyebrow reveal">Indoor Golf · Night or Day · Singapore</div>
+    <h1 class="panel-heading reveal delay-1" style="font-size:clamp(2.2rem,8vw,3.4rem); margin-top:12px;">
+      Golf, elevated.<br><span style="color:var(--green)">Indoors.</span>
+    </h1>
+    <p class="reveal delay-2" style="color:rgba(240,240,240,0.75); font-size:1.05rem; margin-top:16px; margin-bottom:32px;">
+      Three premium simulator bays. One private room with a 4-metre screen. The most immersive indoor golf experience in Singapore.
+    </p>
+    <div class="flex gap-16 reveal delay-3" style="flex-wrap:wrap;">
+      <a href="booking.html" class="btn btn-primary btn-lg">Book a Bay →</a>
+      <a href="supply-install.html" class="btn btn-outline btn-lg">Get Your Own →</a>
+    </div>
+  </section>
+
+  <section class="mobile-scroll-section" style="border-top:1px solid var(--border-light);">
+    <div class="mobile-section-divider"></div>
+    <div class="panel-eyebrow reveal">Pricing</div>
+    <h2 class="reveal delay-1" style="font-size:clamp(1.8rem,6vw,2.4rem); margin-top:12px; margin-bottom:24px;">
+      Transparent,<br><span style="color:var(--green)">straightforward.</span>
+    </h2>
+    <div class="grid-2 reveal delay-2" style="gap:16px;">
+      <div class="pricing-card">
+        <div class="label mb-12">Regular Bay</div>
+        <div class="price-amount">$70<span class="price-unit">/hr</span></div>
+        <div class="price-member">Member: $55/hr</div>
+      </div>
+      <div class="pricing-card featured">
+        <div class="label mb-12">Private Room</div>
+        <div class="price-amount">$80<span class="price-unit">/hr</span></div>
+        <div class="price-member">Member: $65/hr — up to 10 pax</div>
+      </div>
+    </div>
+    <div class="callout callout-green mt-24 reveal delay-3">
+      🏆 <strong>Hole-in-One:</strong> Score one and win <strong>10 hours free</strong> (worth $700)!
+    </div>
+  </section>
+
+  <section class="mobile-scroll-section" style="border-top:1px solid var(--border-light);">
+    <div class="mobile-section-divider"></div>
+    <div class="panel-eyebrow reveal">Private Room</div>
+    <h2 class="reveal delay-1" style="font-size:clamp(1.8rem,6vw,2.4rem); margin-top:12px; margin-bottom:20px;">
+      The 4-metre<br><span style="color:var(--green)">screen experience.</span>
+    </h2>
+    <div class="perk-list reveal delay-2">
+      <div class="perk-item"><span class="perk-icon">✓</span> 4-metre wide screen + 4K laser projector</div>
+      <div class="perk-item"><span class="perk-icon">✓</span> Bluetooth speaker system</div>
+      <div class="perk-item"><span class="perk-icon">✓</span> Up to 10 guests</div>
+      <div class="perk-item"><span class="perk-icon">✓</span> $80/hr ($65 for members)</div>
+      <div class="perk-item"><span class="perk-icon">✓</span> Ideal for corporate events &amp; parties</div>
+    </div>
+    <a href="booking.html" class="btn btn-primary mt-24 reveal delay-3">Reserve the Room →</a>
+  </section>
+
+  <section class="mobile-scroll-section" style="border-top:1px solid var(--border-light); background:linear-gradient(135deg, rgba(72,145,66,0.07) 0%, transparent 100%);">
+    <div class="mobile-section-divider" style="background:var(--orange);"></div>
+    <div class="panel-eyebrow reveal" style="color:var(--orange);">Supply &amp; Install</div>
+    <h2 class="reveal delay-1" style="font-size:clamp(1.8rem,6vw,2.4rem); margin-top:12px; margin-bottom:16px;">
+      Want one<br><span style="color:var(--orange)">at home?</span>
+    </h2>
+    <p class="reveal delay-2" style="color:rgba(240,240,240,0.75); margin-bottom:28px;">
+      Back Nine is Singapore's simulator supply &amp; install specialist. We supply and install premium simulator systems for homes, offices, and commercial venues.
+    </p>
+    <a href="supply-install.html" class="btn btn-orange btn-lg reveal delay-3">Get a Free Quote →</a>
+  </section>
+
+  <section class="mobile-scroll-section" style="border-top:1px solid var(--border-light);">
+    <div class="mobile-section-divider"></div>
+    <div class="panel-eyebrow reveal">Find Us</div>
+    <h2 class="reveal delay-1" style="font-size:clamp(1.8rem,6vw,2.4rem); margin-top:12px; margin-bottom:16px;">
+      We're at<br><span style="color:var(--green)">the Studio.</span>
+    </h2>
+    <p class="reveal delay-2" style="color:rgba(240,240,240,0.75); margin-bottom:8px;">Concept venue, Singapore</p>
+    <p class="reveal delay-2" style="color:rgba(240,240,240,0.6); font-size:0.9rem; margin-bottom:24px;">Parking nearby, a short walk from the MRT.</p>
+    <div class="perk-list reveal delay-3">
+      <div class="perk-item"><span class="perk-icon">📞</span> <a href="tel:+6560000000">+65 6000 0000</a></div>
+      <div class="perk-item"><span class="perk-icon">✉️</span> <a href="mailto:hello@backnine.example">hello@backnine.example</a></div>
+      <div class="perk-item"><span class="perk-icon">🕙</span> Daily 10:00 – 24:00</div>
+    </div>
+    <a href="contact.html" class="btn btn-outline mt-24 reveal" style="animation-delay:0.5s">Get Directions →</a>
+  </section>
+
+  <!-- Mobile footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo"><div class="logo-mark">⛳</div> Back Nine</div>
+          <p>Singapore's premier indoor golf simulator venue and simulator supply &amp; install specialist.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Venue</h4>
+          <ul>
+            <li><a href="booking.html">Book a Bay</a></li>
+            <li><a href="membership.html">Membership</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Simulators</h4>
+          <ul>
+            <li><a href="supply-install.html">Supply &amp; Install</a></li>
+            <li><a href="supply-install.html#get-quote">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item"><span class="icon">📍</span> Concept venue, Singapore</div>
+          <div class="footer-contact-item"><span class="icon">📞</span> <a href="tel:+6560000000">+65 6000 0000</a></div>
+          <div class="footer-contact-item"><span class="icon">🕙</span> Daily 10:00 – 24:00</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Back Nine Pte Ltd</span>
+        <span>Simulator Supply &amp; Install — Singapore</span>
+      </div>
+    </div>
+  </footer>
+</div><!-- /mobile-hero -->
+
+
+<!-- Chatbot -->
+<button id="chat-launcher" aria-label="Open chat">
+  <svg class="icon-open" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+  </svg>
+  <svg class="icon-close" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </svg>
+  <span id="chat-badge" class="chat-badge hidden">1</span>
+</button>
+<div id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">⛳</div>
+    <div>
+      <div class="chat-name">CityBot</div>
+      <div class="chat-status">Online — usually replies instantly</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-input-area">
+    <textarea id="chat-input" placeholder="Ask me anything…" rows="1"></textarea>
+    <button id="chat-send" aria-label="Send">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/chatbot.js"></script>
+
+<!-- 3D scene + scroll panels — ES module, only on non-mobile -->
+<script type="module">
+  import './js/three-scene.js';
+  import './js/scroll-panels.js';
+</script>
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;color:#ddd;font:12px/1.4 system-ui,sans-serif;text-align:center;padding:6px 12px;opacity:.92">Concept demo by Akash Vijayvergia, a fictional venue. Not a real business; forms store data only in your browser.</div>
+</body>
+</html>
